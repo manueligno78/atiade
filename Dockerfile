@@ -9,4 +9,4 @@ COPY pom.xml .
 COPY src ./src
 
 # Esegui il comando mvn test e genera il report
-CMD ["mvn", "test", "verify"]
+CMD ["mvn", "test"]
