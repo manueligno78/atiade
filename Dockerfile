@@ -8,5 +8,5 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
-# Esegui il comando mvn test
+# Esegui il comando mvn test e genera il report
 CMD ["mvn", "test"]
