@@ -1,3 +1,4 @@
 /Dockerfile_
 /target/*
 allure-results/*
+.idea/*
