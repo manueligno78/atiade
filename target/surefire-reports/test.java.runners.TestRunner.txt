@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: test.java.runners.TestRunner
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.542 s <<< FAILURE! - in test.java.runners.TestRunner
+runScenario(test.java.runners.TestRunner)  Time elapsed: 0.095 s  <<< FAILURE!
+java.lang.IllegalStateException: The driver executable must exist: C:\usr\local\bin
+
