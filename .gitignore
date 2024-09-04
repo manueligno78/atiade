@@ -1,2 +1,3 @@
 /Dockerfile_
 /target/*
+allure-results/*
