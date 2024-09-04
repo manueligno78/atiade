@@ -46,4 +46,4 @@ services:
     environment:
       - BROWSER=chrome
       - HUB_HOST=selenium-hub
-    command: ["mvn", "test"]
+    command: ["mvn", "test", "verify"]

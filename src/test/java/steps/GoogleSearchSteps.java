@@ -47,4 +47,10 @@ public class GoogleSearchSteps {
         Assert.assertTrue(googleHomePage.isSearchBoxDisplayed());
         driver.quit();
     }
+    
+    @Then("I should assert false")
+    public void i_should_assert_false() {
+        Assert.assertFalse(true);
+        driver.quit();
+    }
 }
