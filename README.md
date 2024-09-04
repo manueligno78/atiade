@@ -26,6 +26,11 @@ This project demonstrates how to set up Selenium Grid with Chrome and Firefox no
     docker-compose up --build
     ```
 
+3. **Run you test**:
+    ```sh
+    docker-compose up --no-deps test-runner
+    ```
+
 ## Running Tests
 The test-runner service in the docker-compose.yml file is configured to run your tests using Maven. It will execute the tests defined in the src/test/java/runners/runner.xml file.
 
