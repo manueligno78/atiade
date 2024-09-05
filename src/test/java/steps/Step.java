@@ -9,13 +9,13 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.ITestResult;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Step {
     protected WebDriver driver;
-
+    protected WebDriverWait wait;
     public void setUp() throws MalformedURLException {
         String browser = System.getenv("BROWSER");
         String hubHost = System.getenv("HUB_HOST");
@@ -36,7 +36,6 @@ public class Step {
             options.addArguments("--disable-dev-shm-usage");
             driver = new RemoteWebDriver(new URL("http://" + hubHost + ":4444/wd/hub"), options);
         } else if (browser.equalsIgnoreCase("chrome-local")) {
-            //System.setProperty("webdriver.chrome.driver", projectPath);
             WebDriverManager.chromedriver().clearDriverCache().setup();
             driver = new ChromeDriver();
         } else if (browser.equalsIgnoreCase("firefox-local")) {
@@ -45,15 +44,11 @@ public class Step {
         } else {
             throw new IllegalArgumentException("Browser not supported: " + browser);
         }
+        wait = new WebDriverWait(driver, 10);
     }
 
 
-    public void tearDown(ITestResult result) {
-        // Cattura screenshot in caso di fallimento del test
-        // if (!result.isSuccess()) {
-        //     String methodName = result.getMethod().getMethodName();
-        //     ScreenshotUtil.takeScreenshot(driver, "target/screenshots/" + methodName + ".png");
-        // }
+    public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
