@@ -4,9 +4,14 @@
         <listener class-name="io.qameta.allure.testng.AllureTestNg" />
     </listeners>
     <parameter name="cucumber.filter.tags" value="@CloudAcademy" />
-    <test name="Test">
+    <test name="Cucumber Test">
         <classes>
-            <class name="runners.TestRunner" />
+            <class name="runners.CucumberTestRunner" />
+        </classes>
+    </test>
+    <test name="Restassured Test">
+        <classes>
+            <class name="runners.RestAssuredTestRunner" />
         </classes>
     </test>
 </suite>
