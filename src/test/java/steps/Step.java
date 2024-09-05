@@ -40,6 +40,7 @@ public class Step {
             } else {
                 throw new IllegalArgumentException("Browser not supported: " + browser);
             }
+            driver.manage().window().maximize();
             wait = new WebDriverWait(driver, 10);
             System.out.println("SETUP BROWSER DONE!");
         }

@@ -32,4 +32,14 @@ public class CAHomePage extends LoadableComponent<CAHomePage> {
         Assert.assertTrue(driver.getCurrentUrl().contains("https://platform.qa.com/library/"));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@class='react-autosuggest__input']")));
     }
+
+    public void clickPricing() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@aria-label='Pricing & Plans']")));
+        driver.findElement(By.xpath("//a[@aria-label='Pricing & Plans']")).click();
+
+    }
+
+    public void clickStartNowSmallTeams() {
+        driver.findElement(By.xpath("//span[contains(text(),'Start Now')]")).click();
+    }
 }

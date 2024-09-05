@@ -3,13 +3,14 @@ package steps;
 import java.net.MalformedURLException;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.testng.Assert;
 import pages.CAHomePage;
 
 public class CAHome extends Step {
@@ -40,5 +41,39 @@ public class CAHome extends Step {
     @After
     public void afterScenario() {
         tearDown();
+    }
+
+    @When("I click on the pricing link")
+    public void iClickOnThePricingLink() {
+        caHomePage.clickPricing();
+    }
+
+    @Then("I land on the pricing page")
+    public void iLandOnThePricingPage() {
+        wait.until(driver -> driver.getCurrentUrl().contains("https://platform.qa.com/pricing/"));
+    }
+
+    @Then("all pricing plans should be visible")
+    public void allPricingPlansShouldBeVisible() {
+        wait.until(driver -> !driver.findElements(By.xpath("//div[@data-cy='GridCol']//span[@data-cy='button-label']")).isEmpty());
+    }
+
+    @When("I click on the Start Now button for the Small Teams plan")
+    public void iClickOnTheStartNowButtonForTheSmallTeamsPlan() {
+        caHomePage.clickStartNowSmallTeams();
+    }
+
+    @Then("I expect to land on the payment page")
+    public void iExpectToLandOnThePaymentPage() {
+        wait.until(driver -> driver.getCurrentUrl().contains("https://platform.qa.com/checkout-beta/self-serve/account/?annually=1&seats=5"));
+    }
+
+    @And("I should see all the required fields to fill in the form")
+    public void iShouldSeeAllTheRequiredFieldsToFillInTheForm() {
+        wait.until(driver -> !driver.findElements(By.xpath("//input[@name='name']")).isEmpty());
+        wait.until(driver -> !driver.findElements(By.xpath("//input[@name='email']")).isEmpty());
+        wait.until(driver -> !driver.findElements(By.xpath("//input[@name='password']")).isEmpty());
+        wait.until(driver -> !driver.findElements(By.xpath("//input[@name='company']")).isEmpty());
+        wait.until(driver -> !driver.findElements(By.xpath("//input[@name='phone']")).isEmpty());
     }
 }
