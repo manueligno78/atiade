@@ -10,8 +10,8 @@ Feature: Basic Cloud Academy End to End Test
         Examples: 
         | query  | expected_result  |
         | AWS    | AWS              |
-        # | GCP    | GCP              |
-        # | Azure  | Azure            |
+        | GCP    | Google Cloud     |
+        | Azure  | Azure            |
 
 
     # Scenario: User can pay for a subscription plan
