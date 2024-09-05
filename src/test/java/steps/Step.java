@@ -4,19 +4,26 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.ITestResult;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Step {
     protected WebDriver driver;
-
+    protected WebDriverWait wait;
     public void setUp() throws MalformedURLException {
         String browser = System.getenv("BROWSER");
         String hubHost = System.getenv("HUB_HOST");
-
-        if (browser == null || browser.equalsIgnoreCase("chrome")) {
+        // Default to Chrome Local execution
+        if (browser == null) {
+            browser = "firefox-local";
+        }
+        if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless");
             options.addArguments("--no-sandbox");
@@ -28,18 +35,20 @@ public class Step {
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             driver = new RemoteWebDriver(new URL("http://" + hubHost + ":4444/wd/hub"), options);
+        } else if (browser.equalsIgnoreCase("chrome-local")) {
+            WebDriverManager.chromedriver().clearDriverCache().setup();
+            driver = new ChromeDriver();
+        } else if (browser.equalsIgnoreCase("firefox-local")) {
+            WebDriverManager.firefoxdriver().setup();
+            driver = new FirefoxDriver();
         } else {
             throw new IllegalArgumentException("Browser not supported: " + browser);
         }
+        wait = new WebDriverWait(driver, 10);
     }
 
 
-    public void tearDown(ITestResult result) {
-        // Cattura screenshot in caso di fallimento del test
-        // if (!result.isSuccess()) {
-        //     String methodName = result.getMethod().getMethodName();
-        //     ScreenshotUtil.takeScreenshot(driver, "target/screenshots/" + methodName + ".png");
-        // }
+    public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
