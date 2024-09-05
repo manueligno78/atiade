@@ -1,4 +1,4 @@
-@sanity
+@cucumber @sanity
 Feature: Google Search
   Scenario: Verify Google search box
     Given I open Google homepage

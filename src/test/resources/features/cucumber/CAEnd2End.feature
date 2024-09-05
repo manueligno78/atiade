@@ -1,4 +1,4 @@
-@CloudAcademy @End2End
+@cucumber @CloudAcademy @End2End
 Feature: Basic Cloud Academy End to End Test
 
     @search
@@ -13,7 +13,7 @@ Feature: Basic Cloud Academy End to End Test
         | GCP    | Google Cloud     |
         | Azure  | Azure            |
 
-
+     @payment
      Scenario: User can pay for a subscription plan
      User move to pricing page, select the Small teams pricing plan and land on the payment page
      WARNING: This test is not fully automated because of AB testing in place on the target page

@@ -1,4 +1,4 @@
-@rickyandmorty
+@rickyandmorty @restassured
 Feature: Ricky And Morty API Testing
 Using the documentation of the attached API: https://rickandmortyapi.com/
 Test both the Rest API/character and the GraphQL calls, asserting:

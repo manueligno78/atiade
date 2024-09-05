@@ -1,4 +1,5 @@
+@restassured @sanity
 Feature: JsonPlaceHolder API Testing
-  @api
+    Using the documentation of the attached API: https://jsonplaceholder.typicode.com/
   Scenario: Get a post by ID
-    Given setup
+    Given check sanity of jsonplaceholder API
