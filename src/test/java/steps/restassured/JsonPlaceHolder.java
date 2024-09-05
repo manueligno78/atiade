@@ -5,7 +5,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 
-public class Step {
+public class JsonPlaceHolder {
   
     @Given("setup")
     public static void setUp() {
