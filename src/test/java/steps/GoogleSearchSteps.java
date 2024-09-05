@@ -13,7 +13,7 @@ public class GoogleSearchSteps extends Step {
 
     @Given("I open Google homepage")
     public void i_open_google_homepage() throws MalformedURLException {
-        setUp();
+        //setUp();
         driver.get("https://www.google.com");
         googleHomePage = new GoogleHomePage(driver);
     }
@@ -21,12 +21,12 @@ public class GoogleSearchSteps extends Step {
     @Then("I should see the search box")
     public void i_should_see_the_search_box() {
         Assert.assertTrue(googleHomePage.isSearchBoxDisplayed());
-        tearDown(null);
+        //tearDown(null);
     }
     
     @Then("I should assert false")
     public void i_should_assert_false() {
         Assert.assertFalse(true);
-        tearDown(null);
+        //tearDown(null);
     }
 }

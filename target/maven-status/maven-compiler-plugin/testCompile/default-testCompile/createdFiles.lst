@@ -1,1 +1,7 @@
-ExampleTest.class
+pages\GoogleHomePage.class
+steps\Step.class
+steps\GoogleSearchSteps.class
+pages\CAHomePage.class
+runners\TestRunner.class
+utils\ScreenshotUtil.class
+steps\CAHome.class

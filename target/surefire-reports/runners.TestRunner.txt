@@ -1,4 +1,10 @@
 -------------------------------------------------------------------------------
 Test set: runners.TestRunner
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.219 s - in runners.TestRunner
+Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 11.703 s <<< FAILURE! - in runners.TestRunner
+runScenario(runners.TestRunner)  Time elapsed: 2.29 s  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "this.driver" is null
+
+runScenario(runners.TestRunner)  Time elapsed: 2.247 s  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "this.driver" is null
+
