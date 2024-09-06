@@ -41,7 +41,7 @@ services:
       - chrome
       - firefox
     environment:
-      - BROWSER=chrome
+      - BROWSER=firefox
       - HUB_HOST=selenium-hub
     command: ["mvn", "test", "-Dsurefire.suiteXmlFiles=src/test/java/runners/runner.xml"]
 

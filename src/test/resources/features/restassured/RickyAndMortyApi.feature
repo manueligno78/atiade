@@ -1,4 +1,4 @@
-@rickyandmorty @restassured
+@rickyandmorty @restassured @ca-exam
 @normal
 Feature: Ricky And Morty API Testing
 Using the documentation of the attached API: https://rickandmortyapi.com/

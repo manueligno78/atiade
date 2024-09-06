@@ -1,4 +1,4 @@
-@cucumber @CloudAcademy @End2End
+@cucumber @CloudAcademy @End2End @ca-exam
 Feature: Basic Cloud Academy End to End Test
 
     @search @allure.label.layer:web @allure.label.owner:manuel @normal
