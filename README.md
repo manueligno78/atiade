@@ -1,15 +1,18 @@
 # MultiContainerized Application for Test Automation with Allure Reporting
 This project aims to enable the execution of test runners (Selenium, RestAssured, and experimentally Playwright) through Docker. The solution consists of a docker-compose setup capable of running tests defined in Gherkin without additional dependencies, providing high portability and ease of use.
 
+
 ## Prerequisites
 
 - Docker
 - Docker Compose
 
+
 ## Project Structure
 
 - `docker-compose.yml`: Docker Compose configuration file to set up Selenium Grid, Chrome and Firefox nodes, and Allure reporting service.
 - `src/test/java`: Directory containing your test classes and test suite XML file.
+
 
 ## Setup
 
@@ -30,9 +33,10 @@ This project aims to enable the execution of test runners (Selenium, RestAssured
     docker-compose up --no-deps test-runner
     ```
 
+
 ## Running Tests
 There are two general usage modes for running tests:
-1. Virtualized Execution:
+1. **Virtualized Execution**:
 
 Browser nodes are instantiated in Docker containers, and the tests are executed using Maven inside a docker container.
 
@@ -50,7 +54,9 @@ If you want to run the tests again, you can use the following command:
 
 Browser type can be specified by setting the BROWSER environment variable in the docker-compose.yml file.
 
-2. Local Execution:
+
+
+2. **Local Execution**:
 Browser nodes are instantiated locally, and the tests are executed using Maven.
 <pre>mvn clean test -DsuiteXmlFile=src/test/java/runners/runner.xml </pre> 
 
@@ -58,8 +64,10 @@ If the -DsuiteXmlFile parameter is not specified, all tests will be executed.
 
 Browser type can be specified by editing the hardcoded string on steps/cucumber/Step.java:26
 
+
 ## Viewing Allure Reports
 After the tests have been executed, you can view the Allure report by navigating to http://localhost:4040 in your web browser.
+
 
 ## Configuration
 Selenium Hub: The central component of Selenium Grid.
