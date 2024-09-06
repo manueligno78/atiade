@@ -1,6 +1,5 @@
 # Selenium Test Automation with Allure Reporting
-
-This project demonstrates how to set up Selenium Grid with Chrome and Firefox nodes, run automated tests using Maven, and generate test reports using Allure.
+This project aims to enable the execution of test runners (Selenium, RestAssured, and experimentally Playwright) through Docker. The solution consists of a docker-compose setup capable of running tests defined in Gherkin without additional dependencies, providing high portability and ease of use.
 
 ## Prerequisites
 
@@ -42,3 +41,13 @@ Selenium Hub: The central component of Selenium Grid.
 Chrome and Firefox Nodes: Browser nodes that connect to the Selenium Hub.
 Test Runner: A Maven container that runs the tests.
 Allure: A service to generate and serve Allure reports.
+
+## Additional Information
+Volumes: The docker-compose.yml file includes volumes for allure-results and allure-reports to store test results and reports.
+Plugins: The pom.xml file includes the maven-cucumber-reporting plugin to generate Cucumber HTML reports.
+Environment Variables: The docker-compose.yml file sets environment variables for the browser and Selenium Hub host.
+TestNG Configuration: The src/test/java/runners/runner.xml file configures TestNG with Allure reporting.
+Screenshot Utility: The project includes a ScreenshotUtil class to capture screenshots on test failure.
+
+## Experimental Playwright Runner
+In addition to Selenium and RestAssured, it is also possible to run tests using an experimental runner for Playwright. This allows for cross-browser testing with a modern automation framework.
