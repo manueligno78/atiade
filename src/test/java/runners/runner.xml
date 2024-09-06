@@ -3,10 +3,15 @@
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg" />
     </listeners>
-    <parameter name="cucumber.filter.tags" value="@restassured or @cucumber" />
+    <parameter name="cucumber.filter.tags" value="@playwright" />
     <test name="Cucumber Test">
         <classes>
             <class name="runners.CucumberTestRunner" />
+        </classes>
+    </test>
+    <test name="Playwright Test">
+        <classes>
+            <class name="runners.PlaywrightTestRunner" />
         </classes>
     </test>
     <test name="Restassured Test">
