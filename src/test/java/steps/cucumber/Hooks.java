@@ -22,11 +22,10 @@ public class Hooks extends Step {
     public void after(Scenario scenario) throws IOException {
         if (scenario.isFailed()) {
             String screenshotPath = "target/screenshots/" + scenario.getName() + ".jpg";
-            ScreenshotUtil.takeScreenshot(driver, screenshotPath);
-            File screenshot = new File(screenshotPath);
-            Allure.addAttachment("Screenshot", Files.newInputStream(screenshot.toPath()));
+            byte[] screenshot = ScreenshotUtil.takeScreenshot(driver);
+            scenario.attach(screenshot, "image/png", "Screenshot");
+            Allure.addAttachment("Screenshot", "image/png", Files.newInputStream(new File(screenshotPath).toPath()), "png");
         }
         tearDown();
     }
-    
 }
