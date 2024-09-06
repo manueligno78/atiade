@@ -36,10 +36,12 @@ There are two general usage modes for running tests:
 
 Browser nodes are instantiated in Docker containers, and the tests are executed using Maven inside a docker container.
 
-The test-runner service in the docker-compose.yml file is configured to run your tests using Maven. It will execute the tests defined in the src/test/java/runners/runner.xml file.
+The *test-runner* service in the docker-compose.yml file is configured to run your tests using Maven. It will execute the tests defined in the src/test/java/runners/runner.xml file.
 <pre>docker-compose up --build </pre>
 
-docker-compose *up* command will build the Docker images declared on docker-compose.yaml and start the Selenium Grid, Chrome and Firefox nodes, and Allure reporting service. The test-runner service will be started, and the tests will be executed.
+docker-compose *up* command will build the Docker images declared on docker-compose.yaml and start the Selenium Grid, Chrome and Firefox nodes, and Allure reporting service. 
+
+The test-runner service will be started, and the tests will be executed.
 
 After the tests have been executed, you can view the Allure report by navigating to http://localhost:4040 in your web browser.
 
@@ -57,15 +59,23 @@ After the tests have been executed, you can view the Allure report by navigating
 
 ## Configuration
 Selenium Hub: The central component of Selenium Grid.
+
 Chrome and Firefox Nodes: Browser nodes that connect to the Selenium Hub.
+
 Test Runner: A Maven container that runs the tests.
+
 Allure: A service to generate and serve Allure reports.
 
 ## Additional Information
+
 Volumes: The docker-compose.yml file includes volumes for allure-results and allure-reports to store test results and reports.
+
 Plugins: The pom.xml file includes the maven-cucumber-reporting plugin to generate Cucumber HTML reports.
+
 Environment Variables: The docker-compose.yml file sets environment variables for the browser and Selenium Hub host.
+
 TestNG Configuration: The src/test/java/runners/runner.xml file configures TestNG with Allure reporting.
+
 Screenshot Utility: The project includes a ScreenshotUtil class to capture screenshots on test failure.
 
 ## Experimental Playwright Runner
