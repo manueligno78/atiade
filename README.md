@@ -31,7 +31,26 @@ This project aims to enable the execution of test runners (Selenium, RestAssured
     ```
 
 ## Running Tests
+There are two general usage modes for running tests:
+1. Virtualized Execution:
+
+Browser nodes are instantiated in Docker containers, and the tests are executed using Maven inside a docker container.
+
 The test-runner service in the docker-compose.yml file is configured to run your tests using Maven. It will execute the tests defined in the src/test/java/runners/runner.xml file.
+<pre>docker-compose up --build </pre>
+
+docker-compose *up* command will build the Docker images declared on docker-compose.yaml and start the Selenium Grid, Chrome and Firefox nodes, and Allure reporting service. The test-runner service will be started, and the tests will be executed.
+
+After the tests have been executed, you can view the Allure report by navigating to http://localhost:4040 in your web browser.
+
+If you want to run the tests again, you can use the following command:
+<pre>docker-compose up --no-deps test-runner </pre>
+
+2. Local Execution:
+Browser nodes are instantiated locally, and the tests are executed using Maven.
+<pre>mvn clean test -DsuiteXmlFile=src/test/java/runners/runner.xml </pre> 
+
+If the -DsuiteXmlFile parameter is not specified, all tests will be executed.
 
 ## Viewing Allure Reports
 After the tests have been executed, you can view the Allure report by navigating to http://localhost:4040 in your web browser.
