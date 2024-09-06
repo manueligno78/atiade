@@ -2,6 +2,7 @@ package steps.cucumber;
 
 import java.net.MalformedURLException;
 
+import io.qameta.allure.Allure;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -24,11 +25,13 @@ public class CAHome extends Step {
 
     @When("I search for {string}")
     public void i_search_for(String query) {
+        Allure.parameter("query", query);
         caHomePage.search(query);
     }
     
     @Then("I should see a list of courses related to {string}")
     public void i_should_see_a_list_of_courses_related_to(String query) {
+        Allure.parameter("query", query);
         wait.until(driver -> !driver.findElements(By.xpath("//h1[@data-cy='search-result-title']")).isEmpty());
         Assert.assertFalse(driver.findElements(By.xpath("//h1[@data-cy='search-result-title'][contains(text(),'" + query + "')]")).isEmpty());
     }
