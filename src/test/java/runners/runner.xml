@@ -3,7 +3,7 @@
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg" />
     </listeners>
-    <parameter name="cucumber.filter.tags" value="@playwright" />
+    <parameter name="cucumber.filter.tags" value="@search" />
     <test name="Cucumber Test">
         <classes>
             <class name="runners.CucumberTestRunner" />
