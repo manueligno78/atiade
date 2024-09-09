@@ -15,7 +15,6 @@ public class CAHomePage extends LoadableComponent<CAHomePage> {
     WebDriver driver;
     WebDriverWait wait;
 
-    // Define locators using @FindBy annotation
     @FindBy(xpath = "//input[@class='react-autosuggest__input']")
     WebElement searchInput;
 
@@ -62,6 +61,7 @@ public class CAHomePage extends LoadableComponent<CAHomePage> {
     }
 
     public void clickStartNowSmallTeams() {
+        wait.until(ExpectedConditions.visibilityOf(startNowButton));
         startNowButton.click();
     }
 
