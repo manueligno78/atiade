@@ -4,18 +4,34 @@ This project aims to enable the execution of test runners (Selenium, RestAssured
 
 ## Architecture
 ```mermaid
-classDiagram
-    class User {
-      +String name
-      +String email
-    }
+flowchart TD
+    A[Selenium Hub] -->|Event Bus| B[Chrome Node]
+    A -->|Event Bus| C[Firefox Node]
+    B -->|Depends On| D[Test Runner]
+    C -->|Depends On| D[Test Runner]
+    D -->|Publishes Results To| E[Allure Reports]
+    
+    subgraph Volumes
+      F[Allure Results]
+      G[Allure Reports]
+    end
 
-    class Order {
-      +Date orderDate
-      +User user
-    }
+    E --> F
+    E --> G
 
-    User --> Order : places
+    A[Selenium Hub]:::hub
+    B[Chrome Node]:::node
+    C[Firefox Node]:::node
+    D[Test Runner]:::runner
+    E[Allure Service]:::allure
+    F[Allure Results Volume]:::volume
+    G[Allure Reports Volume]:::volume
+
+    classDef hub fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef node fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef runner fill:#ccf,stroke:#333,stroke-width:2px;
+    classDef allure fill:#dfb,stroke:#333,stroke-width:2px;
+    classDef volume fill:#ffe,stroke:#333,stroke-width:2px;
 ```
 
 ## Prerequisites
