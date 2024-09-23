@@ -18,7 +18,7 @@ flowchart TD
 
 
     subgraph DockerEcosystem [Docker Ecosystem]
-        subgraph TestRunner [Maven run also without Docker]
+        subgraph TestRunner [Maven]
             A[Test Runner]:::runner -->|Executes| B[mvn test]:::command
             B -->|Locally uses| H[WebDriverManager]:::local-drivers
         end
@@ -44,8 +44,8 @@ flowchart TD
     class H local-drivers;
 
     %% Posizionamento verticale
-    style TestRunner  stroke-width:2px;
-    style DockerEcosystem stroke-width:2px;
+    style TestRunner  stroke-width:3px;
+    style DockerEcosystem stroke-width:4px;
 
 ```
 ## Setup
