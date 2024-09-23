@@ -2,38 +2,6 @@
 ![Project Logo](./images/logo.png)
 This project aims to enable the execution of test runners (Selenium, RestAssured, and experimentally Playwright) through Docker. The solution consists of a docker-compose setup capable of running tests defined in Gherkin without additional dependencies, providing high portability and ease of use.
 
-## Architecture
-```mermaid
-flowchart TD
-    A[Selenium Hub] -->|Event Bus| B[Chrome Node]
-    A -->|Event Bus| C[Firefox Node]
-    B -->|Depends On| D[Test Runner]
-    C -->|Depends On| D[Test Runner]
-    D -->|Publishes Results To| E[Allure Reports]
-    
-    subgraph Volumes
-      F[Allure Results]
-      G[Allure Reports]
-    end
-
-    E --> F
-    E --> G
-
-    A[Selenium Hub]:::hub
-    B[Chrome Node]:::node
-    C[Firefox Node]:::node
-    D[Test Runner]:::runner
-    E[Allure Service]:::allure
-    F[Allure Results Volume]:::volume
-    G[Allure Reports Volume]:::volume
-
-    classDef hub fill:#f9f,stroke:#333,stroke-width:2px;
-    classDef node fill:#bbf,stroke:#333,stroke-width:2px;
-    classDef runner fill:#ccf,stroke:#333,stroke-width:2px;
-    classDef allure fill:#dfb,stroke:#333,stroke-width:2px;
-    classDef volume fill:#ffe,stroke:#333,stroke-width:2px;
-```
-
 ## Prerequisites
 
 - Docker
@@ -45,7 +13,41 @@ flowchart TD
 - `docker-compose.yml`: Docker Compose configuration file to set up Selenium Grid, Chrome and Firefox nodes, and Allure reporting service.
 - `src/test/java`: Directory containing your test classes and test suite XML file.
 
+```mermaid
+flowchart TD
 
+
+    subgraph DockerEcosystem [Docker Ecosystem]
+        subgraph TestRunner [Maven run also without Docker]
+            A[Test Runner]:::runner -->|Executes| B[mvn test]:::command
+            B -->|Locally uses| H[WebDriverManager]:::local-drivers
+        end
+        B -->|Send test execution to| C[Selenium Hub]:::hub
+        C -->|Communicates via Event Bus| D[Chrome Node]:::node
+        C -->|Communicates via Event Bus| E[Firefox Node]:::node
+        B -->|Sends test results To| F[Allure Service]:::allure
+    end
+
+    classDef runner fill:#696262, stroke:#d94a4a;
+    classDef command fill:#222922, stroke:#4ad94a;
+    classDef hub fill:#222222, stroke:#4a4ad9;
+    classDef node fill:#333333, stroke:#d94ad9;
+    classDef allure fill:#414141, stroke:#d9d94a;
+    classDef local-drivers fill:#323939, stroke:#4ad9d9;
+
+    class A runner;
+    class B command;
+    class C hub;
+    class D node;
+    class E node;
+    class F allure;
+    class H local-drivers;
+
+    %% Posizionamento verticale
+    style TestRunner  stroke-width:2px;
+    style DockerEcosystem stroke-width:2px;
+
+```
 ## Setup
 
 1. **Clone the repository**:
