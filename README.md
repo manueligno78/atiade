@@ -2,6 +2,21 @@
 ![Project Logo](./images/logo.png)
 This project aims to enable the execution of test runners (Selenium, RestAssured, and experimentally Playwright) through Docker. The solution consists of a docker-compose setup capable of running tests defined in Gherkin without additional dependencies, providing high portability and ease of use.
 
+## Architecture
+```mermaid
+classDiagram
+    class User {
+      +String name
+      +String email
+    }
+
+    class Order {
+      +Date orderDate
+      +User user
+    }
+
+    User --> Order : places
+```
 
 ## Prerequisites
 
