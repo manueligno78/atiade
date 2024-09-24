@@ -1,5 +1,6 @@
 # ATIADE - Automatic Tests In A Docker Environment
-![Project Logo](./src/test/resources/images/logo.png)
+<img src="./src/test/resources/images/logo.png" alt="Project Logo" width="200"/>
+
 This project aims to enable the execution of test runners (Selenium, RestAssured, and experimentally Playwright) through Docker. The solution consists of a docker-compose setup capable of running tests defined in Gherkin without additional dependencies, providing high portability and ease of use.
 
 ## Prerequisites
