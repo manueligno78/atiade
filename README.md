@@ -11,7 +11,7 @@ This project aims to enable the execution of test runners (Selenium, RestAssured
 
 ## Project Structure
 
-- `docker-compose.yml`: Docker Compose configuration file to set up Selenium Grid, Chrome and Firefox nodes, and Allure reporting service.
+- `docker-compose.yaml`: Docker Compose configuration file to set up Selenium Grid, Chrome and Firefox nodes, and Allure reporting service.
 - `src/test/java`: Directory containing your test classes and test suite XML file.
 
 ```mermaid
@@ -63,7 +63,7 @@ flowchart TD
     docker-compose up --build
     ```
 
-3. **Run you test**:
+3. **Run your test**:
     ```sh
     docker-compose up --no-deps test-runner
     ```
@@ -75,7 +75,7 @@ There are two general usage modes for running tests:
 
 Browser nodes are instantiated in Docker containers, and the tests are executed using Maven inside a docker container.
 
-The *test-runner* service in the docker-compose.yml file is configured to run your tests using Maven. It will execute the tests defined in the src/test/java/runners/runner.xml file.
+The *test-runner* service in the docker-compose.yaml file is configured to run your tests using Maven. It will execute the tests defined in the src/test/java/runners/runner.xml file.
 <pre>docker-compose up --build </pre>
 
 docker-compose *up* command will build the Docker images declared on docker-compose.yaml and start the Selenium Grid, Chrome and Firefox nodes, and Allure reporting service. 
@@ -87,7 +87,7 @@ After the tests have been executed, you can view the Allure report by navigating
 If you want to run the tests again, you can use the following command:
 <pre>docker-compose up --no-deps test-runner </pre>
 
-Browser type can be specified by setting the BROWSER environment variable in the docker-compose.yml file.
+Browser type can be specified by setting the BROWSER environment variable in the docker-compose.yaml file.
 
 
 
@@ -115,11 +115,11 @@ Allure: A service to generate and serve Allure reports.
 
 ## Additional Information
 
-Volumes: The docker-compose.yml file includes volumes for allure-results and allure-reports to store test results and reports.
+Volumes: The docker-compose.yaml file includes volumes for allure-results and allure-reports to store test results and reports.
 
 Plugins: The pom.xml file includes the maven-cucumber-reporting plugin to generate Cucumber HTML reports.
 
-Environment Variables: The docker-compose.yml file sets environment variables for the browser and Selenium Hub host.
+Environment Variables: The docker-compose.yaml file sets environment variables for the browser and Selenium Hub host.
 
 TestNG Configuration: The src/test/java/runners/runner.xml file configures TestNG with Allure reporting.
 
