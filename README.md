@@ -116,10 +116,11 @@ Browser type can be specified by editing the hardcoded string on steps/cucumber/
   test-runner:
     ...
     environment:
-      - BROWSER=firefox
-      - HUB_HOST=hub-cloud.browserstack.com
-      - BROWSERSTACK_USER=<your_browserstack_username>
-      - BROWSERSTACK_KEY=<your_browserstack_access_key>
+       - BROWSER=firefox
+       - HUB_HOST=hub.browserstack.com
+       - HUB_PORT=80
+       - BROWSERSTACK_USERNAME=<your_browserstack_username>
+       - BROWSERSTACK_ACCESS_KEY=<your_browserstack_access_key>
     ...
 ...
 
